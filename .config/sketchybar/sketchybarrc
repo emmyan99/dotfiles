@@ -51,8 +51,9 @@ sketchybar --default icon.font="CaskaydiaCove Nerd Font:Bold:16.0"  \
 # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
 # to indicate active and available mission control spaces
 
-sketchybar --add item finder3 left  \
-           --set finder3 icon=󰀶     \
+sketchybar --add item findericon left            \
+           --set findericon icon=󰀶               \
+           --set findericon icon.font.size=20.0  \
 
 
 SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
@@ -112,7 +113,11 @@ sketchybar --add item clock right                              \
            --add item battery right                            \
            --set battery script="$PLUGIN_DIR/battery.sh"       \
                          update_freq=120                       \
-           --subscribe battery system_woke power_source_change
+           --subscribe battery system_woke power_source_change \
+                                                               \
+           --add item uptime right                             \
+           --set uptime script="$PLUGIN_DIR/uptime.sh"         \
+                        update_freq=3600                       \
 
 ##### Finalizing Setup #####
 # The below command is only needed at the end of the initial configuration to
